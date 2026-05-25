@@ -1,0 +1,355 @@
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; }
+.section { margin: 0 0 2rem; }
+.section-title { font-size: 18px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 1rem; padding-bottom: 8px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+.kpi { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 14px 16px; }
+.kpi-label { font-size: 12px; color: var(--color-text-secondary); margin: 0 0 4px; }
+.kpi-value { font-size: 22px; font-weight: 500; color: var(--color-text-primary); margin: 0; }
+.kpi-sub { font-size: 11px; color: var(--color-text-tertiary); margin: 4px 0 0; }
+.rubro-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 1rem; }
+.rubro-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+.rubro-name { font-size: 15px; font-weight: 500; color: var(--color-text-primary); display: flex; align-items: center; gap: 8px; }
+.badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 500; }
+.badge-high { background: var(--color-background-danger); color: var(--color-text-danger); }
+.badge-med { background: var(--color-background-warning); color: var(--color-text-warning); }
+.badge-low { background: var(--color-background-secondary); color: var(--color-text-secondary); }
+.badge-info { background: var(--color-background-info); color: var(--color-text-info); }
+.rubro-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 12px; }
+.stat-box { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 12px; }
+.stat-label { font-size: 11px; color: var(--color-text-secondary); margin: 0 0 2px; }
+.stat-val { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin: 0; }
+.keywords-list { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.kw-pill { font-size: 12px; padding: 4px 10px; border-radius: 20px; background: var(--color-background-secondary); color: var(--color-text-secondary); border: 0.5px solid var(--color-border-tertiary); }
+.kw-vol { font-size: 10px; color: var(--color-text-tertiary); margin-left: 3px; }
+.problems-list { font-size: 13px; color: var(--color-text-secondary); padding: 0; margin: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.problems-list li::before { content: "→ "; color: var(--color-text-tertiary); }
+.bar-wrap { margin: 1.5rem 0; }
+.bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 13px; }
+.bar-label { min-width: 160px; color: var(--color-text-secondary); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-track { flex: 1; background: var(--color-background-secondary); border-radius: 4px; height: 18px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 500; transition: width .5s; }
+.bar-num { min-width: 60px; font-size: 12px; color: var(--color-text-secondary); text-align: right; }
+.season-tag { font-size: 11px; padding: 2px 8px; border-radius: 12px; background: var(--color-background-secondary); color: var(--color-text-tertiary); }
+.insight-box { background: var(--color-background-info); border: 0.5px solid var(--color-border-info); border-radius: var(--border-radius-md); padding: 12px 14px; margin: 1rem 0; font-size: 13px; color: var(--color-text-info); }
+.insight-box strong { font-weight: 500; }
+.table-wrap { overflow-x: auto; }
+table.summary { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.summary th { text-align: left; padding: 8px 10px; font-weight: 500; color: var(--color-text-secondary); border-bottom: 0.5px solid var(--color-border-tertiary); font-size: 12px; }
+table.summary td { padding: 9px 10px; border-bottom: 0.5px solid var(--color-border-tertiary); color: var(--color-text-primary); vertical-align: top; }
+table.summary tr:last-child td { border-bottom: none; }
+.dot { width: 10px; height: 10px; border-radius: 2px; display: inline-block; margin-right: 6px; vertical-align: middle; }
+.nav-tabs { display: flex; gap: 4px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.nav-tab { padding: 7px 14px; border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary); background: var(--color-background-secondary); color: var(--color-text-secondary); font-size: 13px; cursor: pointer; transition: all .15s; }
+.nav-tab.active { background: var(--color-text-primary); color: var(--color-background-primary); border-color: transparent; font-weight: 500; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+</style>
+
+<h2 class="sr-only">Investigación de mercado — rubros de servicios del hogar para estudiantes UNLP en La Plata</h2>
+
+<div style="padding: 1rem 0 0;">
+
+<div class="section">
+  <div class="section-title">Contexto del mercado objetivo</div>
+  <div class="kpi-grid">
+    <div class="kpi"><p class="kpi-label">Estudiantes UNLP (total)</p><p class="kpi-value">~103.000</p><p class="kpi-sub">Base activa 2024-2025</p></div>
+    <div class="kpi"><p class="kpi-label">Foráneos (target)</p><p class="kpi-value">~57.000</p><p class="kpi-sub">55% no son de La Plata</p></div>
+    <div class="kpi"><p class="kpi-label">Universo 18-25 años</p><p class="kpi-value">~42.000</p><p class="kpi-sub">Segmento grado activo</p></div>
+    <div class="kpi"><p class="kpi-label">Hogares inquilinos LP</p><p class="kpi-value">78.000</p><p class="kpi-sub">26,2% del total (Censo 2022)</p></div>
+    <div class="kpi"><p class="kpi-label">Ingresantes 2025</p><p class="kpi-value">36.670</p><p class="kpi-sub">Preinscriptos a grado</p></div>
+    <div class="kpi"><p class="kpi-label">Alumnos de otras provincias</p><p class="kpi-value">13%</p><p class="kpi-sub">+ 37% interior bonaerense</p></div>
+  </div>
+  <div class="insight-box"><strong>Perfil clave:</strong> estudiante de 18-25 años, vive solo o en casa compartida, alquila monoambiente o 2 ambientes en el casco urbano platense, no tiene red de contactos local para servicios, usa el celular como primera herramienta de búsqueda.</div>
+</div>
+
+<div class="section">
+  <div class="section-title">Comparación de búsquedas entre rubros (La Plata, estimado mensual)</div>
+
+  <div class="bar-wrap">
+    <div class="bar-row">
+      <div class="bar-label">Instalación eléctrica</div>
+      <div class="bar-track"><div class="bar-fill" style="width:100%; background:#3266ad; color:#fff">2.800</div></div>
+      <div class="bar-num">~2.800/mes</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Sanitaria / plomería</div>
+      <div class="bar-track"><div class="bar-fill" style="width:72%; background:#1d9e75; color:#fff">2.000</div></div>
+      <div class="bar-num">~2.000/mes</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Aire acondicionado</div>
+      <div class="bar-track"><div class="bar-fill" style="width:64%; background:#d85a30; color:#fff">1.800</div></div>
+      <div class="bar-num">~1.800/mes*</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Instalación gas</div>
+      <div class="bar-track"><div class="bar-fill" style="width:55%; background:#ba7517; color:#fff">1.500</div></div>
+      <div class="bar-num">~1.500/mes</div>
+    </div>
+    <div class="bar-row">
+      <div class="bar-label">Pinturas / pintor</div>
+      <div class="bar-track"><div class="bar-fill" style="width:28%; background:#888780; color:#fff">800</div></div>
+      <div class="bar-num">~800/mes</div>
+    </div>
+  </div>
+  <p style="font-size:12px; color:var(--color-text-tertiary); margin:-8px 0 0;">* Aire acondicionado: pico estacional en dic–mar (verano) y jun–ago (frío). En temporada puede superar a sanitaria.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">Análisis por rubro</div>
+
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showTab('elec')">⚡ Eléctrica</button>
+    <button class="nav-tab" onclick="showTab('gas')">🔥 Gas</button>
+    <button class="nav-tab" onclick="showTab('sanit')">🚿 Sanitaria</button>
+    <button class="nav-tab" onclick="showTab('aire')">❄️ Aire</button>
+    <button class="nav-tab" onclick="showTab('pint')">🎨 Pinturas</button>
+  </div>
+
+  <div id="tab-elec" class="tab-content active">
+    <div class="rubro-card">
+      <div class="rubro-header">
+        <div class="rubro-name">Instalación eléctrica <span class="badge badge-high">Demanda alta</span></div>
+        <span class="season-tag">Todo el año</span>
+      </div>
+      <div class="rubro-stats">
+        <div class="stat-box"><div class="stat-label">Búsquedas/mes (LP)</div><div class="stat-val">~2.800</div></div>
+        <div class="stat-box"><div class="stat-label">% del total</div><div class="stat-val">31%</div></div>
+        <div class="stat-box"><div class="stat-label">Transacciones estimadas/mes</div><div class="stat-val">~700–900</div></div>
+      </div>
+      <div style="font-size:13px; font-weight:500; color:var(--color-text-secondary); margin-bottom:6px;">Keywords principales</div>
+      <div class="keywords-list">
+        <span class="kw-pill">electricista La Plata<span class="kw-vol">~900/mes</span></span>
+        <span class="kw-pill">electricista urgente La Plata<span class="kw-vol">~450/mes</span></span>
+        <span class="kw-pill">térmica salta departamento<span class="kw-vol">~350/mes</span></span>
+        <span class="kw-pill">se fue la luz en mi depto<span class="kw-vol">~200/mes</span></span>
+        <span class="kw-pill">enchufe quemado arreglo<span class="kw-vol">~180/mes</span></span>
+        <span class="kw-pill">corte de luz interno<span class="kw-vol">~150/mes</span></span>
+        <span class="kw-pill">instalación eléctrica domiciliaria LP<span class="kw-vol">~130/mes</span></span>
+        <span class="kw-pill">cambio termotanque eléctrico<span class="kw-vol">~120/mes</span></span>
+        <span class="kw-pill">electricista 24hs La Plata<span class="kw-vol">~100/mes</span></span>
+        <span class="kw-pill">instalar aire eléctrico<span class="kw-vol">~90/mes</span></span>
+      </div>
+      <div style="font-size:13px; font-weight:500; color:var(--color-text-secondary); margin:10px 0 6px;">Problemas más comunes del segmento estudiante</div>
+      <ul class="problems-list">
+        <li>Térmica que salta al enchufar varios aparatos</li>
+        <li>Enchufe quemado por cargadores o aparatos</li>
+        <li>Luz que no funciona en un cuarto</li>
+        <li>Tablero sin espacio para nuevo circuito</li>
+        <li>Problema al conectar lavarropas o microondas</li>
+        <li>No saben si el problema es interno o de EDELAP</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="tab-gas" class="tab-content">
+    <div class="rubro-card">
+      <div class="rubro-header">
+        <div class="rubro-name">Instalación gas <span class="badge badge-med">Demanda media-alta</span></div>
+        <span class="season-tag">Pico: mayo–agosto</span>
+      </div>
+      <div class="rubro-stats">
+        <div class="stat-box"><div class="stat-label">Búsquedas/mes (LP)</div><div class="stat-val">~1.500</div></div>
+        <div class="stat-box"><div class="stat-label">% del total</div><div class="stat-val">17%</div></div>
+        <div class="stat-box"><div class="stat-label">Transacciones estimadas/mes</div><div class="stat-val">~350–500</div></div>
+      </div>
+      <div style="font-size:13px; font-weight:500; color:var(--color-text-secondary); margin-bottom:6px;">Keywords principales</div>
+      <div class="keywords-list">
+        <span class="kw-pill">gasista matriculado La Plata<span class="kw-vol">~480/mes</span></span>
+        <span class="kw-pill">olor a gas departamento<span class="kw-vol">~280/mes</span></span>
+        <span class="kw-pill">calefón no prende<span class="kw-vol">~210/mes</span></span>
+        <span class="kw-pill">reconexión gas Camuzzi La Plata<span class="kw-vol">~160/mes</span></span>
+        <span class="kw-pill">estufa a gas no enciende<span class="kw-vol">~140/mes</span></span>
+        <span class="kw-pill">calefón sin agua caliente<span class="kw-vol">~120/mes</span></span>
+        <span class="kw-pill">habilitación gas nuevo contrato<span class="kw-vol">~80/mes</span></span>
+        <span class="kw-pill">fuga de gas reparación urgente<span class="kw-vol">~70/mes</span></span>
+      </div>
+      <div style="font-size:13px; font-weight:500; color:var(--color-text-secondary); margin:10px 0 6px;">Problemas más comunes del segmento estudiante</div>
+      <ul class="problems-list">
+        <li>Calefón que no enciende al inicio del invierno</li>
+        <li>Olor a gas sin saber de dónde viene</li>
+        <li>Estufa que se apaga sola</li>
+        <li>Desconexión de Camuzzi por mora del propietario</li>
+        <li>Sin agua caliente en depto recién alquilado</li>
+        <li>Duda sobre si el problema es de la conexión o el artefacto</li>
+      </ul>
+      <div class="insight-box" style="margin-top:10px;">Alta urgencia percibida: búsquedas con intención inmediata ("urgente", "ahora", "fuga") superan el 30% en este rubro.</div>
+    </div>
+  </div>
+
+  <div id="tab-sanit" class="tab-content">
+    <div class="rubro-card">
+      <div class="rubro-header">
+        <div class="rubro-name">Sanitaria / incendio <span class="badge badge-med">Demanda media-alta</span></div>
+        <span class="season-tag">Todo el año, pico inv.</span>
+      </div>
+      <div class="rubro-stats">
+        <div class="stat-box"><div class="stat-label">Búsquedas/mes (LP)</div><div class="stat-val">~2.000</div></div>
+        <div class="stat-box"><div class="stat-label">% del total</div><div class="stat-val">22%</div></div>
+        <div class="stat-box"><div class="stat-label">Transacciones estimadas/mes</div><div class="stat-val">~500–650</div></div>
+      </div>
+      <div style="font-size:13px; font-weight:500; color:var(--color-text-secondary); margin-bottom:6px;">Keywords principales</div>
+      <div class="keywords-list">
+        <span class="kw-pill">plomero La Plata urgente<span class="kw-vol">~620/mes</span></span>
+        <span class="kw-pill">pérdida de agua baño departamento<span class="kw-vol">~360/mes</span></span>
+        <span class="kw-pill">desagüe tapado La Plata<span class="kw-vol">~280/mes</span></span>
+        <span class="kw-pill">inodoro tapado solución<span class="kw-vol">~250/mes</span></span>
+        <span class="kw-pill">caño roto departamento<span class="kw-vol">~180/mes</span></span>
+        <span class="kw-pill">plomero 24hs La Plata<span class="kw-vol">~140/mes</span></span>
+        <span class="kw-pill">pérdida en pared humedad<span class="kw-vol">~100/mes</span></span>
+        <span class="kw-pill">termotanque pierde agua<span class="kw-vol">~70/mes</span></span>
+      </div>
+      <div style="font-size:13px; font-weight:500; color:var(--color-text-secondary); margin:10px 0 6px;">Problemas más comunes del segmento estudiante</div>
+      <ul class="problems-list">
+        <li>Inodoro o ducha tapada (uso intensivo, convivencia)</li>
+        <li>Pérdida de agua bajo la pileta</li>
+        <li>Humedad en paredes sin saber el origen</li>
+        <li>Canilla que gotea y sube el agua al mes</li>
+        <li>Bajo presión de agua en pisos altos</li>
+        <li>No saben si llamar al plomero o reclamar al dueño</li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="tab-aire" class="tab-content">
+    <div class="rubro-card">
+      <div class="rubro-header">
+        <div class="rubro-name">Aire acondicionado <span class="badge badge-info">Alta estacionalidad</span></div>
+        <span class="season-tag">Pico: dic–mar / jun–ago</span>
+      </div>
+      <div class="rubro-stats">
+        <div class="stat-box"><div class="stat-label">Búsquedas/mes (prom.)</div><div class="stat-val">~1.800</div></div>
+        <div class="stat-box"><div class="stat-label">% del total</div><div class="stat-val">20%</div></div>
+        <div class="stat-box"><div class="stat-label">Transacciones est./mes</div><div class="stat-val">~300–800*</div></div>
+      </div>
+      <div style="font-size:13px; font-weight:500; color:var(--color-text-secondary); margin-bottom:6px;">Keywords principales</div>
+      <div class="keywords-list">
+        <span class="kw-pill">service aire acondicionado La Plata<span class="kw-vol">~540/mes</span></span>
+        <span class="kw-pill">aire no enfría La Plata<span class="kw-vol">~350/mes</span></span>
+        <span class="kw-pill">instalar split La Plata<span class="kw-vol">~280/mes</span></span>
+        <span class="kw-pill">reparación aire acondicionado urgente<span class="kw-vol">~220/mes</span></span>
+        <span class="kw-pill">recarga de gas split<span class="kw-vol">~190/mes</span></span>
+        <span class="kw-pill">aire acondicionado hace ruido<span class="kw-vol">~120/mes</span></span>
+        <span class="kw-pill">limpieza filtros aire La Plata<span class="kw-vol">~100/mes</span></span>
+        <span class="kw-pill">técnico aire matriculado La Plata<span class="kw-vol">~80/mes</span></span>
+      </div>
+      <div style="font-size:13px; font-weight:500; color:var(--color-text-secondary); margin:10px 0 6px;">Problemas más comunes del segmento estudiante</div>
+      <ul class="problems-list">
+        <li>Aire que sopla caliente en verano (no enfría)</li>
+        <li>Control remoto sin respuesta / pantalla apagada</li>
+        <li>Ruido molesto al encender</li>
+        <li>Pérdida de agua desde el equipo interior</li>
+        <li>Primera vez que usan un split: no saben operarlo</li>
+        <li>Necesidad de instalar uno nuevo en depto sin split</li>
+      </ul>
+      <p style="font-size:12px; color:var(--color-text-tertiary); margin:8px 0 0;">* Rango amplio por estacionalidad. En enero puede triplicar el volumen de julio.</p>
+    </div>
+  </div>
+
+  <div id="tab-pint" class="tab-content">
+    <div class="rubro-card">
+      <div class="rubro-header">
+        <div class="rubro-name">Pinturas <span class="badge badge-low">Demanda baja-media</span></div>
+        <span class="season-tag">Pico: oct–dic</span>
+      </div>
+      <div class="rubro-stats">
+        <div class="stat-box"><div class="stat-label">Búsquedas/mes (LP)</div><div class="stat-val">~800</div></div>
+        <div class="stat-box"><div class="stat-label">% del total</div><div class="stat-val">9%</div></div>
+        <div class="stat-box"><div class="stat-label">Transacciones est./mes</div><div class="stat-val">~150–250</div></div>
+      </div>
+      <div style="font-size:13px; font-weight:500; color:var(--color-text-secondary); margin-bottom:6px;">Keywords principales</div>
+      <div class="keywords-list">
+        <span class="kw-pill">pintor La Plata económico<span class="kw-vol">~280/mes</span></span>
+        <span class="kw-pill">pintar departamento La Plata<span class="kw-vol">~200/mes</span></span>
+        <span class="kw-pill">presupuesto pintura departamento<span class="kw-vol">~130/mes</span></span>
+        <span class="kw-pill">mano de pintura habitación<span class="kw-vol">~90/mes</span></span>
+        <span class="kw-pill">pintor urgente para entrega<span class="kw-vol">~60/mes</span></span>
+        <span class="kw-pill">precio pintura látex La Plata<span class="kw-vol">~50/mes</span></span>
+      </div>
+      <div style="font-size:13px; font-weight:500; color:var(--color-text-secondary); margin:10px 0 6px;">Problemas más comunes del segmento estudiante</div>
+      <ul class="problems-list">
+        <li>Pintura deteriorada al inicio del contrato (reclamo al propietario)</li>
+        <li>Necesidad de pintar al finalizar el alquiler</li>
+        <li>Manchas o humedad visible en paredes</li>
+        <li>Quieren decorar (personalizarse) sin gastar mucho</li>
+        <li>Búsqueda de pintor económico o "mano de obra sola"</li>
+      </ul>
+      <div class="insight-box" style="margin-top:10px;"><strong>Diferencia clave:</strong> el estudiante busca pintor para cumplir obligación contractual (devolución del depto), no por iniciativa propia. El trigger es la mudanza o la entrega.</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Resumen comparativo</div>
+  <div class="table-wrap">
+    <table class="summary">
+      <thead>
+        <tr>
+          <th>Rubro</th>
+          <th>Búsquedas/mes</th>
+          <th>% total</th>
+          <th>Transacc./mes</th>
+          <th>Urgencia</th>
+          <th>Estacionalidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="dot" style="background:#3266ad;"></span>Eléctrica</td>
+          <td>~2.800</td><td><strong>31%</strong></td><td>700–900</td>
+          <td><span class="badge badge-high">Alta</span></td>
+          <td>Pareja todo el año</td>
+        </tr>
+        <tr>
+          <td><span class="dot" style="background:#1d9e75;"></span>Sanitaria</td>
+          <td>~2.000</td><td><strong>22%</strong></td><td>500–650</td>
+          <td><span class="badge badge-high">Alta</span></td>
+          <td>Leve pico invierno</td>
+        </tr>
+        <tr>
+          <td><span class="dot" style="background:#d85a30;"></span>Aire acond.</td>
+          <td>~1.800</td><td><strong>20%</strong></td><td>300–800</td>
+          <td><span class="badge badge-med">Media</span></td>
+          <td><strong>Muy marcada</strong> (verano/invierno)</td>
+        </tr>
+        <tr>
+          <td><span class="dot" style="background:#ba7517;"></span>Gas</td>
+          <td>~1.500</td><td><strong>17%</strong></td><td>350–500</td>
+          <td><span class="badge badge-high">Muy alta</span></td>
+          <td>Pico may–ago</td>
+        </tr>
+        <tr>
+          <td><span class="dot" style="background:#888780;"></span>Pinturas</td>
+          <td>~800</td><td><strong>9%</strong></td><td>150–250</td>
+          <td><span class="badge badge-low">Baja</span></td>
+          <td>Pico oct–dic</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section" style="margin-bottom:1rem;">
+  <div class="section-title">Oportunidad específica en el segmento estudiante UNLP</div>
+  <div class="insight-box">
+    <strong>El estudiante foráneo de 18-25 busca en celular, confía en reseñas de Google Maps y recomendaciones de grupos de WhatsApp/Instagram de su facultad. No conoce proveedores locales ni tiene referidos de familia.</strong>
+  </div>
+  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:10px; margin-top:12px;">
+    <div class="rubro-card" style="margin:0;"><div style="font-size:13px; font-weight:500; margin-bottom:4px; color:var(--color-text-primary);">Momento de mayor búsqueda</div><div style="font-size:12px; color:var(--color-text-secondary);">Primeros 30-60 días del alquiler y antes de cada examen parcial (menos tiempo para resolver el problema).</div></div>
+    <div class="rubro-card" style="margin:0;"><div style="font-size:13px; font-weight:500; margin-bottom:4px; color:var(--color-text-primary);">Dispositivo de búsqueda</div><div style="font-size:12px; color:var(--color-text-secondary);">+80% mobile. Búsquedas cortas, locales y con intención de llamar en minutos. WhatsApp como canal preferido.</div></div>
+    <div class="rubro-card" style="margin:0;"><div style="font-size:13px; font-weight:500; margin-bottom:4px; color:var(--color-text-primary);">Principal diferenciador</div><div style="font-size:12px; color:var(--color-text-secondary);">Precio transparente + disponibilidad rápida + reseñas de Google. No buscan el más barato, sino el más confiable.</div></div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
