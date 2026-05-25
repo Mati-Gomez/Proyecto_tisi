@@ -29,6 +29,16 @@ h3 { font-size: 14px; font-weight: 500; color: var(--color-text-secondary); marg
 
 <div class="wrap">
 
+
+<h3 style="margin-top:0.5rem;">Resumen ejecutivo</h3>
+<div class="summary-grid">
+  <div class="sum-card"><p class="sum-label">Eléctrica</p><p class="sum-val">$35.450</p><p class="sum-sub">ticket ponderado</p></div>
+  <div class="sum-card"><p class="sum-label">Sanitaria</p><p class="sum-val">$43.500</p><p class="sum-sub">ticket ponderado</p></div>
+  <div class="sum-card"><p class="sum-label">Gas</p><p class="sum-val">$49.500</p><p class="sum-sub">ticket ponderado</p></div>
+  <div class="sum-card"><p class="sum-label">Aire acond.</p><p class="sum-val">$85.375</p><p class="sum-sub">ticket ponderado</p></div>
+  <div class="sum-card"><p class="sum-label">Pinturas</p><p class="sum-val">$330.000</p><p class="sum-sub">ticket ponderado</p></div>
+</div>
+
 <h3>Precios de mercado — reparaciones puntuales en La Plata (2025)</h3>
 
 <div class="rubro-block">
@@ -118,15 +128,6 @@ h3 { font-size: 14px; font-weight: 500; color: var(--color-text-secondary); marg
     </tbody>
   </table>
   <div class="source-tag">Fuente: precios de mercado La Plata 2025 · ~$12k–$18k/m² (látex int. 1 prep + 2 manos)</div>
-</div>
-
-<h3 style="margin-top:0.5rem;">Resumen ejecutivo</h3>
-<div class="summary-grid">
-  <div class="sum-card"><p class="sum-label">Eléctrica</p><p class="sum-val">$35.450</p><p class="sum-sub">ticket ponderado</p></div>
-  <div class="sum-card"><p class="sum-label">Sanitaria</p><p class="sum-val">$43.500</p><p class="sum-sub">ticket ponderado</p></div>
-  <div class="sum-card"><p class="sum-label">Gas</p><p class="sum-val">$49.500</p><p class="sum-sub">ticket ponderado</p></div>
-  <div class="sum-card"><p class="sum-label">Aire acond.</p><p class="sum-val">$85.375</p><p class="sum-sub">ticket ponderado</p></div>
-  <div class="sum-card"><p class="sum-label">Pinturas</p><p class="sum-val">$330.000</p><p class="sum-sub">ticket ponderado</p></div>
 </div>
 
 <div class="conv-note">
