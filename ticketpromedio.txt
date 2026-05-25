@@ -1,0 +1,136 @@
+
+<style>
+* { box-sizing: border-box; }
+.wrap { padding: 1rem 0; font-size: 13px; color: var(--color-text-primary); }
+.rubro-block { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; margin-bottom: 1.25rem; }
+.rubro-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+.rubro-title { font-size: 15px; font-weight: 500; }
+.ticket-prom { font-size: 13px; color: var(--color-text-secondary); }
+.ticket-prom strong { font-size: 16px; font-weight: 500; color: var(--color-text-primary); }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+thead th { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); padding: 6px 10px; border-bottom: 0.5px solid var(--color-border-tertiary); text-align: left; }
+thead th.right { text-align: right; }
+tbody td { padding: 9px 10px; border-bottom: 0.5px solid var(--color-border-tertiary); vertical-align: middle; }
+tbody tr:last-child td { border-bottom: none; }
+td.right { text-align: right; font-variant-numeric: tabular-nums; }
+.freq-bar { background: var(--color-background-secondary); border-radius: 3px; height: 6px; overflow: hidden; width: 60px; display: inline-block; vertical-align: middle; }
+.freq-fill { height: 100%; border-radius: 3px; }
+.subtotal-row td { font-weight: 500; background: var(--color-background-secondary); color: var(--color-text-primary); border-top: 0.5px solid var(--color-border-secondary); }
+.source-tag { font-size: 11px; color: var(--color-text-tertiary); margin-top: 8px; }
+.summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+.sum-card { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px; }
+.sum-label { font-size: 11px; color: var(--color-text-secondary); margin: 0 0 4px; }
+.sum-val { font-size: 18px; font-weight: 500; color: var(--color-text-primary); margin: 0; }
+.sum-sub { font-size: 11px; color: var(--color-text-tertiary); margin: 3px 0 0; }
+.conv-note { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 10px 14px; font-size: 12px; color: var(--color-text-secondary); margin-top: 1.5rem; }
+.conv-note strong { font-weight: 500; color: var(--color-text-primary); }
+h3 { font-size: 14px; font-weight: 500; color: var(--color-text-secondary); margin: 0 0 0.75rem; text-transform: uppercase; letter-spacing: .04em; font-size: 11px; }
+</style>
+
+<div class="wrap">
+
+<h3>Precios de mercado — reparaciones puntuales en La Plata (2025)</h3>
+
+<div class="rubro-block">
+  <div class="rubro-head">
+    <span class="rubro-title">⚡ Instalación eléctrica</span>
+    <span class="ticket-prom">Ticket ponderado: <strong>~$35.600</strong></span>
+  </div>
+  <table>
+    <thead><tr><th>Tipo de arreglo</th><th class="right">Rango (mat.+MO)</th><th class="right">Punto medio</th><th class="right">Freq. est.</th><th class="right">Ponderación</th></tr></thead>
+    <tbody>
+      <tr><td>Cambio térmica / disyuntor</td><td class="right">$25k – $55k</td><td class="right">$40.000</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:80%;background:#3266ad"></span></span> 40%</td><td class="right">$16.000</td></tr>
+      <tr><td>Cambio tomacorriente / tecla</td><td class="right">$18k – $35k</td><td class="right">$26.500</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:60%;background:#3266ad"></span></span> 30%</td><td class="right">$7.950</td></tr>
+      <tr><td>Circuito sin luz / lámpara quemada</td><td class="right">$20k – $40k</td><td class="right">$30.000</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:40%;background:#3266ad"></span></span> 20%</td><td class="right">$6.000</td></tr>
+      <tr><td>Urgencia nocturna / fin de semana</td><td class="right">$40k – $70k</td><td class="right">$55.000</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:20%;background:#3266ad"></span></span> 10%</td><td class="right">$5.500</td></tr>
+      <tr class="subtotal-row"><td colspan="4">Ticket promedio ponderado</td><td class="right">$35.450</td></tr>
+    </tbody>
+  </table>
+  <div class="source-tag">Fuentes: AAIERIC costos sugeridos ene-2026 · Ellaburante feb-2025 · Clickie Argentina 2025</div>
+</div>
+
+<div class="rubro-block">
+  <div class="rubro-head">
+    <span class="rubro-title">🔥 Instalación gas</span>
+    <span class="ticket-prom">Ticket ponderado: <strong>~$49.200</strong></span>
+  </div>
+  <table>
+    <thead><tr><th>Tipo de arreglo</th><th class="right">Rango (mat.+MO)</th><th class="right">Punto medio</th><th class="right">Freq. est.</th><th class="right">Ponderación</th></tr></thead>
+    <tbody>
+      <tr><td>Revisión / reencendido calefón</td><td class="right">$20k – $45k</td><td class="right">$32.500</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:100%;background:#ba7517"></span></span> 50%</td><td class="right">$16.250</td></tr>
+      <tr><td>Reconexión Camuzzi (matric. requerido)</td><td class="right">$50k – $120k</td><td class="right">$85.000</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:50%;background:#ba7517"></span></span> 25%</td><td class="right">$21.250</td></tr>
+      <tr><td>Reparación estufa / artefacto</td><td class="right">$30k – $60k</td><td class="right">$45.000</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:30%;background:#ba7517"></span></span> 15%</td><td class="right">$6.750</td></tr>
+      <tr><td>Detección y reparación fuga</td><td class="right">$35k – $70k</td><td class="right">$52.500</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:20%;background:#ba7517"></span></span> 10%</td><td class="right">$5.250</td></tr>
+      <tr class="subtotal-row"><td colspan="4">Ticket promedio ponderado</td><td class="right">$49.500</td></tr>
+    </tbody>
+  </table>
+  <div class="source-tag">Fuentes: Genz Clima abr-2025 · estimado mercado La Plata / GBA interior 2025</div>
+</div>
+
+<div class="rubro-block">
+  <div class="rubro-head">
+    <span class="rubro-title">🚿 Instalación sanitaria / incendio</span>
+    <span class="ticket-prom">Ticket ponderado: <strong>~$43.400</strong></span>
+  </div>
+  <table>
+    <thead><tr><th>Tipo de arreglo</th><th class="right">Rango (mat.+MO)</th><th class="right">Punto medio</th><th class="right">Freq. est.</th><th class="right">Ponderación</th></tr></thead>
+    <tbody>
+      <tr><td>Destapación inodoro / desagüe</td><td class="right">$20k – $50k</td><td class="right">$35.000</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:90%;background:#1d9e75"></span></span> 45%</td><td class="right">$15.750</td></tr>
+      <tr><td>Reparación pérdida / canilla</td><td class="right">$25k – $60k</td><td class="right">$42.500</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:60%;background:#1d9e75"></span></span> 30%</td><td class="right">$12.750</td></tr>
+      <tr><td>Cambio sifón / ramal / flexibles</td><td class="right">$30k – $70k</td><td class="right">$50.000</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:30%;background:#1d9e75"></span></span> 15%</td><td class="right">$7.500</td></tr>
+      <tr><td>Destapación con máquina / caño</td><td class="right">$50k – $100k</td><td class="right">$75.000</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:20%;background:#1d9e75"></span></span> 10%</td><td class="right">$7.500</td></tr>
+      <tr class="subtotal-row"><td colspan="4">Ticket promedio ponderado</td><td class="right">$43.500</td></tr>
+    </tbody>
+  </table>
+  <div class="source-tag">Fuentes: Genz Clima abr-2025 · estimado mercado La Plata 2025</div>
+</div>
+
+<div class="rubro-block">
+  <div class="rubro-head">
+    <span class="rubro-title">❄️ Aire acondicionado</span>
+    <span class="ticket-prom">Ticket ponderado: <strong>~$85.200</strong></span>
+  </div>
+  <table>
+    <thead><tr><th>Tipo de arreglo</th><th class="right">Rango (mat.+MO)</th><th class="right">Punto medio</th><th class="right">Freq. est.</th><th class="right">Ponderación</th></tr></thead>
+    <tbody>
+      <tr><td>Limpieza de filtros / mantenimiento</td><td class="right">$25k – $50k</td><td class="right">$37.500</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:70%;background:#d85a30"></span></span> 35%</td><td class="right">$13.125</td></tr>
+      <tr><td>Recarga gas refrigerante R410</td><td class="right">$60k – $120k</td><td class="right">$90.000</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:60%;background:#d85a30"></span></span> 30%</td><td class="right">$27.000</td></tr>
+      <tr><td>Reparación plaqueta / falla eléctrica</td><td class="right">$80k – $200k</td><td class="right">$140.000</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:40%;background:#d85a30"></span></span> 20%</td><td class="right">$28.000</td></tr>
+      <tr><td>Instalación nueva (MO sin equipo)</td><td class="right">$80k – $150k</td><td class="right">$115.000</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:30%;background:#d85a30"></span></span> 15%</td><td class="right">$17.250</td></tr>
+      <tr class="subtotal-row"><td colspan="4">Ticket promedio ponderado</td><td class="right">$85.375</td></tr>
+    </tbody>
+  </table>
+  <div class="source-tag">Fuentes: Service La Plata · Climas La Plata · estimado mercado LP 2025</div>
+</div>
+
+<div class="rubro-block">
+  <div class="rubro-head">
+    <span class="rubro-title">🎨 Pinturas</span>
+    <span class="ticket-prom">Ticket ponderado: <strong>~$330.000</strong></span>
+  </div>
+  <table>
+    <thead><tr><th>Tipo de trabajo</th><th class="right">Superficie</th><th class="right">Precio total (mat.+MO)</th><th class="right">Freq. est.</th><th class="right">Ponderación</th></tr></thead>
+    <tbody>
+      <tr><td>Habitación estándar</td><td class="right">~12–15 m²</td><td class="right">$180.000</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:100%;background:#888780"></span></span> 50%</td><td class="right">$90.000</td></tr>
+      <tr><td>Dos habitaciones</td><td class="right">~24–28 m²</td><td class="right">$360.000</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:50%;background:#888780"></span></span> 25%</td><td class="right">$90.000</td></tr>
+      <tr><td>Monoambiente completo</td><td class="right">~38–45 m² pared</td><td class="right">$600.000</td><td class="right"><span class="freq-bar"><span class="freq-fill" style="width:50%;background:#888780"></span></span> 25%</td><td class="right">$150.000</td></tr>
+      <tr class="subtotal-row"><td colspan="4">Ticket promedio ponderado</td><td class="right">$330.000</td></tr>
+    </tbody>
+  </table>
+  <div class="source-tag">Fuente: precios de mercado La Plata 2025 · ~$12k–$18k/m² (látex int. 1 prep + 2 manos)</div>
+</div>
+
+<h3 style="margin-top:0.5rem;">Resumen ejecutivo</h3>
+<div class="summary-grid">
+  <div class="sum-card"><p class="sum-label">Eléctrica</p><p class="sum-val">$35.450</p><p class="sum-sub">ticket ponderado</p></div>
+  <div class="sum-card"><p class="sum-label">Sanitaria</p><p class="sum-val">$43.500</p><p class="sum-sub">ticket ponderado</p></div>
+  <div class="sum-card"><p class="sum-label">Gas</p><p class="sum-val">$49.500</p><p class="sum-sub">ticket ponderado</p></div>
+  <div class="sum-card"><p class="sum-label">Aire acond.</p><p class="sum-val">$85.375</p><p class="sum-sub">ticket ponderado</p></div>
+  <div class="sum-card"><p class="sum-label">Pinturas</p><p class="sum-val">$330.000</p><p class="sum-sub">ticket ponderado</p></div>
+</div>
+
+<div class="conv-note">
+  <strong>Aclaración de fuentes y metodología:</strong> los rangos de precios provienen de AAIERIC (electricistas, ene-2026), Genz Clima (plomeros y AC, abr-2025), Ellaburante (electricistas, feb-2025) y estimaciones de mercado La Plata/GBA interior basadas en precios publicados por prestadores locales. Las frecuencias por tipo de arreglo son estimaciones del comportamiento esperado para el segmento estudiante. No existe una fuente estadística pública que las valide con exactitud — si tenés datos propios de tickets o trabajos realizados, es lo que debería reemplazar estas frecuencias.
+</div>
+
+</div>
